@@ -1,0 +1,14 @@
+{
+  "name": "WS_EX1_Book_Store",
+  "version": "1.0.0",
+  "description": "Book Store",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Natalie",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.12.3"
+  }
+}
