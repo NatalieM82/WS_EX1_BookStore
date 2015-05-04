@@ -31,6 +31,7 @@ exports.getByType = function (book_type) {
 			newList.push(booksList[i]);
 		}
 	}
+	
 	if(newList.length > 0){
 		return JSON.stringify(newList);
 	}
