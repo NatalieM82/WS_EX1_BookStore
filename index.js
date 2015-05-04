@@ -29,5 +29,5 @@ app.get('/getByType/:type', function(req,res){
 	res.end(details);
 });
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
 console.log("Listening on port 8080");
