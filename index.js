@@ -11,22 +11,26 @@ var app = express();
 		
 // }).listen(8080);
 
+app.get('/', function(req,res){
+	res.sendFile(__dirname + '/index.html');
+});
+
 app.get('/getAllBooks', function(req,res){
 	console.log("Getting all books");
 	var details = books.getAllBooks();
-	res.end(details);
+	res.json(details);
 });
 
 app.get('/getBook/:id', function(req,res){
 	console.log("Getting Book by Id: " + req.params.id);
 	var details = books.getBook(req.params.id);
-	res.end(details);
+	res.json(details);
 });
 
-app.get('/getByType/:type', function(req,res){
-	console.log("Getting Books by type: " + req.params.type);
-	var details = books.getByType(req.params.type);
-	res.end(details);
+app.get('/getBySpell/:spell', function(req,res){
+	console.log("Getting Books by type: " + req.params.spell);
+	var details = books.getBySpell(req.params.spell);
+	res.json(details);
 });
 
 app.listen(process.env.PORT || 8080);

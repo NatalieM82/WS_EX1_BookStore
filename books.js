@@ -1,15 +1,16 @@
 
 var booksList = [
-{id:"1", name:"a", author:"aa", year:"2015", type:"Comedy", price:"11", rate:"1"},
-{id:"2", name:"b", author:"bb", year:"2015", type:"Drama", price:"22", rate:"2"},
-{id:"3", name:"c", author:"cc", year:"2015", type:"Drama", price:"33", rate:"3"},
-{id:"4", name:"d", author:"dd", year:"2015", type:"Drama", price:"44", rate:"4"},
-{id:"5", name:"e", author:"ee", year:"2015", type:"Comedy", price:"55", rate:"5"},
-{id:"6", name:"f", author:"ff", year:"2015", type:"Comedy", price:"66", rate:"6"}
+{id:"1", name:"Harry Potter and the Philosopher's Stone", author:"J. K. Rowling", year:"1997", pages:"309", sales:"4,200,654$", cover:"http://en.wikipedia.org/wiki/File:Harry_Potter_and_the_Sorcerer%27s_Stone.jpg#/media/File:Harry_Potter_and_the_Sorcerer%27s_Stone.jpg", spell:["Alohomora", "Accio"]},
+{id:"2", name:"Harry Potter and the Chamber of Secrets", author:"J. K. Rowling", year:"1998", pages:"352", sales:"3,484,047$", cover:"http://en.wikipedia.org/wiki/File:Harry_Potter_and_the_Chamber_of_Secrets_(US_cover).jpg#/media/File:Harry_Potter_and_the_Chamber_of_Secrets_(US_cover).jpg", spell:["Expelliarmus", "Imperio"]},
+{id:"3", name:"Harry Potter and the Prisoner of Azkaban", author:"J. K. Rowling", year:"1999", pages:"448", sales:"3,377,906$", cover:"http://en.wikipedia.org/wiki/File:Harry_Potter_and_the_Prisoner_of_Azkaban_(US_cover).jpg#/media/File:Harry_Potter_and_the_Prisoner_of_Azkaban_(US_cover).jpg", spell:["Imperio", "Accio"]},
+{id:"4", name:"Harry Potter and the Goblet of Fire", author:"J. K. Rowling", year:"2000", pages:"734", sales:"3,583,215$", cover:"http://en.wikipedia.org/wiki/File:Harry_Potter_and_the_Goblet_of_Fire_(US_cover).jpg#/media/File:Harry_Potter_and_the_Goblet_of_Fire_(US_cover).jpg", spell:["Nox", "Reparo"]},
+{id:"5", name:"Harry Potter and the Order of the Phoenix", author:"J. K. Rowling", year:"2003", pages:"896", sales:"4,179,479$", cover:"http://en.wikipedia.org/wiki/File:Harry_Potter_and_the_Order_of_the_Phoenix_(US_cover).jpg#/media/File:Harry_Potter_and_the_Order_of_the_Phoenix_(US_cover).jpg", spell:["Riddikulus", "Wingardium Leviosa"]},
+{id:"6", name:"Harry Potter and the Half-Blood Prince", author:"J. K. Rowling", year:"2005", pages:"652", sales:"2,950,264$", cover:"http://en.wikipedia.org/wiki/File:Harry_Potter_and_the_Half-Blood_Prince_(US_cover).jpg#/media/File:Harry_Potter_and_the_Half-Blood_Prince_(US_cover).jpg", spell:["Lumos", "Accio"]},
+{id:"7", name:"Harry Potter and the Deathly Hallows", author:"J. K. Rowling", year:"2007", pages:"784", sales:"4,475,152$", cover:"http://en.wikipedia.org/wiki/File:Harry_Potter_and_the_Deathly_Hallows_(US_cover).jpg#/media/File:Harry_Potter_and_the_Deathly_Hallows_(US_cover).jpg", spell:["Imperio", "Riddikulus"]}
 ];
 
 exports.getAllBooks = function () {
-	return JSON.stringify(booksList);
+	return booksList;
 }
 
 exports.getBook = function (book_id) {
@@ -17,23 +18,25 @@ exports.getBook = function (book_id) {
 	for (var i = 0; i < booksList.length; i++){
 		//console.log(books[i].id);
 		if(booksList[i].id == book_id){
-			return JSON.stringify(booksList[i]);
+			return booksList[i];
 		}
 	}
 }
 
-exports.getByType = function (book_type) {
+exports.getBySpell = function (spell_name) {
 	console.log("Books array length: " + booksList.length);
 	var newList = [];
 	for (var i = 0; i < booksList.length; i++){
-		//console.log(books[i].id);
-		if(booksList[i].type == book_type){
+		if(booksList[i].spell[0] == spell_name){
+			newList.push(booksList[i]);
+		}
+		if(booksList[i].spell[1] == spell_name){
 			newList.push(booksList[i]);
 		}
 	}
 	
 	if(newList.length > 0){
-		return JSON.stringify(newList);
+		return newList;
 	}
 	else return("Couldn't find any books by your request");
 }
